@@ -1,6 +1,6 @@
 # bubblonpython
 Bubbl Unique Bulding Block Layer on Python:  Apps as executable diagrams on an 'active paper' worktop
-
+-----------------------------------------------------------------------------------------------------
 BUBBL on Python is a GUI program development environment using a 'desktop' 
 metaphor on which diagrams are created and then 'run' as apps.
 
