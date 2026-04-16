@@ -26,8 +26,8 @@ The following instructions assume Python version 3.8.10 or later is installed
 on the target machine, and that typing 'python' at the command prompt starts
 that version of Python.
 
-All files in the same folder as this file should be copied to the folder where
-BUBBL will be installed (the 'installation folder').
+The file bubbl.zip should be unzipped to the folder where BUBBL will be installed
+(the 'installation folder').
 
 On Linux (and possibly other platforms) BUBBL should be run in a Python
 virtual environment to avoid clashing with system tools.
