@@ -33,18 +33,21 @@ On Linux (and possibly other platforms) BUBBL should be run in a Python
 virtual environment to avoid clashing with system tools.
 
 To create a virtual environment do the following:
-    1. Create a folder to store the virtual environment.
+1. Create a folder to store the virtual environment.
      Note: This is not where you will create programs, but where Python
            scripts will find the installed modules and libraries.
            For more information see:
                 https://docs.python.org/3/library/venv.html
-    2. On Windows, open 'command prompt', on Linux open a terminal.
-    3. enter "python -m venv <path to v-env>"
-        where <path to v-env> is the path of the folder
-    4. Activate the virtual environment (this has to be done every
+2. On Windows, open 'command prompt', on Linux open a terminal.
+3. Enter "python -m venv  path-to-v-env"
+        where path-to-v-env is the path of the folder
+4. Activate the virtual environment (this has to be done every
         time BUBBL is run from the command line)
-        On Windows enter "<path to v-env>\Scripts\activate"
-        On Linux enter "source <path to v-env>/bin/activate"
+   
+   On Windows enter "path-to-v-env\Scripts\activate"
+   
+   On Linux enter "source path-to-v-env/bin/activate"
+   
       Note: The virtual environment can be deactivated by
             entering "deactivate"
 
