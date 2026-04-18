@@ -1,3 +1,5 @@
+__version__="1.0.0"
+__copyright__="Copyright © 2026 Barnaby McCabe"
 import io
 import shutil
 import json
