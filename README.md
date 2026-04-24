@@ -80,6 +80,8 @@ such as live variable views and stepping or stepping backwards etc. or
 they can be run as standalone Python scripts.
 
 Standalone programs should be saved with a '.py' extension and need to
-have a copy of bubblib.zip in the same folder.
+have a copy (or zipped copy) of 'bubblib' folder in the same folder. 
+The bubblib folder can be found in bubblib.zip which is in bubbl.zip
+
 
 
