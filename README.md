@@ -10,8 +10,8 @@ code;  allowing multiple 'snippets' of code runnable with a click to 'try it
 and see' without having to edit and then re-edit source code.
 
 The diagrams are a hybrid of flow-charts and state-diagrams and consist of
-linked-together blocks which define how the program behaves. There are built-
-in blocks which make it easy to access all the computer's resources (e.g. 
+linked-together blocks which define how the program behaves. There are built-in blocks
+which make it easy to access all the computer's resources (e.g. 
 screen, keyboard, mouse, file system, images, network etc.) without having to
 memorize 'library' calls. The programmer can also define new blocks, including
 'raw Python' blocks which can access anything from the Python universe.
