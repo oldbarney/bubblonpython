@@ -49,7 +49,7 @@ To create a virtual environment do the following:
    On Linux enter "source _path-to-v-env_/bin/activate"
    
       Note: The virtual environment can be deactivated by
-            entering _deactivate_
+            entering "_deactivate_"
 
 Note: Before installing BUBBL on Linux Mint or Ubuntu, install the
     python3-tk package (e.g. by entering: _sudo apt install python3-tk_
