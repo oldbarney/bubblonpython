@@ -65,12 +65,12 @@ Getting Started
 ---------------
 Bubbl on Python comes with some example apps which can be run, edited and
 otherwise played with. These include:
-  A Jigsaw maker
-  A Sudoku Solver
-  'Planet of the Pompeys' game
-  An Oware player
-  An alarm clock
-  An AI face detector
+  * A Jigsaw maker
+  * A Sudoku Solver
+  * 'Planet of the Pompeys' game
+  * An Oware player
+  * An alarm clock
+  * An AI face detector
 
 Other information
 -----------------
