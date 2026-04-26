@@ -4,8 +4,7 @@ Bubbl Unique Bulding Block Layer on Python:  An IDE to build Python apps from ex
 BUBBL on Python is a GUI program development environment using a 'desktop' 
 metaphor on which diagrams are created and then 'run' as apps.
 
-There are unique features of the development environment such as: stepping a
-program backwards to find bugs; freely placing images, web-links, graphics, 
+It has unique features such as: stepping a program backwards to find bugs; freely placing images, web-links, graphics, 
 live-views of variables and expressions and other 'active' items within the
 code;  allowing multiple 'snippets' of code runnable with a click to 'try it 
 and see' without having to edit and then re-edit source code.
