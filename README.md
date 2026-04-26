@@ -39,24 +39,24 @@ To create a virtual environment do the following:
            For more information see:
                 https://docs.python.org/3/library/venv.html
 2. On Windows, open 'command prompt', on Linux open a terminal.
-3. Enter "python -m venv  path-to-v-env"
-        where path-to-v-env is the path of the folder
+3. Enter "python -m venv  _path-to-v-env_"
+        where _path-to-v-env_ is the path of the folder
 4. Activate the virtual environment (this has to be done every
         time BUBBL is run from the command line)
    
-   On Windows enter "path-to-v-env\Scripts\activate"
+   On Windows enter "_path-to-v-env_\Scripts\activate"
    
-   On Linux enter "source path-to-v-env/bin/activate"
+   On Linux enter "source _path-to-v-env_/bin/activate"
    
       Note: The virtual environment can be deactivated by
-            entering "deactivate"
+            entering _deactivate_
 
 Note: Before installing BUBBL on Linux Mint or Ubuntu, install the
-    python3-tk package (e.g. by entering: "sudo apt install python3-tk"
+    python3-tk package (e.g. by entering: _sudo apt install python3-tk_
     in a terminal).
 
 With the virtual environment activated (if necessary) navigate to the 
-installation folder and  enter "python bubbl.py". This will start the BUBBL
+installation folder and  enter _python bubbl.py_. This will start the BUBBL
 IDE after successfully completing the installation process.
 
 If any additional requirements are necessary, run the above command again
