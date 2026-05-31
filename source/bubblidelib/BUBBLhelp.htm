@@ -1,0 +1,503 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<version><H2> Bubbl Help File</H2><h3>Revision 0.0.0Alpha </h3></version>
+<html>
+<head>
+</head>
+<Body>
+<a href="#introInfo">Introduction</a><br /><br />
+<a href="#behavDig">BUBBL Behaviour Diagrams</a><br /><br />
+<a href="http://www.bubbl.org.uk">BUBBL main website</a><br /><br />
+<H2><A NAME="home"></a>Index</H2>
+<p>
+<a href="#glossary">Glossary<br/></a>
+<a href="#dataTypesInfo">Data types<br /></a>
+<a href="#dispInfo">The Display<br /></a>
+<a href="#DISPLAYInfo">PAGE<br /></a>
+<a href="#eventsInfo">Events<br /></a>
+<a href="#infoHTI">How to ...<br /></a>
+<a href="#helloInfo">Hello World Program<br /></a>
+<a href="#howToCont">How to contact the author<br /></a>
+<a href="#howToWrite">How to display data<br /></a>
+<a href="#howToGen">How to make a Generator, Iterator or Template<br /></a>
+<a href="#howToSound">How to play sound<br /></a>
+<a href="#howToLoop">Looping and iteration<br /></a>
+<a href="#messInfo">Notes and comments<br /></a>
+<a href="#sysVarsInfo">System variables<br /></a>
+</p>
+<h3><a NAME="glossary"></a>Glossary</h3>
+<a href="#home">Index</a><br /> 
+<TABLE BORDER="">
+
+
+<tr><TD WIDTH=90 VALIGN=TOP><p><b>alpha channel</b></p></td><td>
+<p>Images with an alpha channel allow a 'transparency' effect.  Each pixel of the image has an alpha value
+in the range 0 to 255, with 0 indicating totally transparent and 255 being totally opaque.  When the images are painted onto
+a window the alpha value is used to calculate how much of the colour already present 'shows through' to the pixel being drawn.
+</p></td></tr>
+<tr><TD WIDTH=90 VALIGN=TOP><p><b>annotation</b></p></td><td>
+<p>BUBBL provides a way to store additional data about tables, these additional data are
+called 'annotations' and can be accessed in two ways: either from the column 'annotations' in the table 
+'TABLE', or the column 'value' in the table 'TABLE_METADATA'.
+</p></td></tr>
+<tr><TD WIDTH=90 VALIGN=TOP><p><b>assign</b></p></td><td>
+<p>When a BUBBL program stores a value in a variable, this is called 'assigning' a value to the variable.  It is
+similar to the idea of 'let' in formal algebra: e.g. "let x=5" assigns the value 5 to the variable 'x'.  The BUBBL 'Let' (or 'Assign')
+ instruction is used to assign values to variables.
+</p></td></tr>
+<tr><TD WIDTH=90 VALIGN=TOP><p><b>column</b></p></td><td>
+<p>Part of the contents of a table, consisting of the
+set of all row values for a particular column of the table.<br />
+'column' is synonymous with 'field'</p></td></tr>
+
+<tr><TD WIDTH=90 VALIGN=TOP><p><b>data</b></p></td><td>
+<p>Information represented as sequences of characters. E.g. '23' is a representation of the number 23.
+</p></td></tr>
+
+<tr><TD VALIGN="TOP"><B>database</B></td><td>
+One or more '<a href="#glos_table">tables</a>' which contain related information.
+</td></tr>
+<tr><TD VALIGN="TOP"><B>design pattern</B></td><td>
+A formal description of a solution to a common 'problem' (or system requirement) in software development which is generally held to be the 'best practice'
+for solving the 'problem'.
+</td></tr>
+
+<tr><TD VALIGN="TOP" id="glos_event"><B>event</B></td><td>
+A real time occurrence of something relevant, such as a key-press or mouse movement. In BUBBL there are built in events for
+keyboard and mouse input, timing and other uses
+</td></tr>
+
+<tr><td><A id="glos_execute"></a><B>execute</B></td>
+<td>'Run' or 'enact' a program or instruction.</td></tr>
+
+<tr><TD WIDTH=90 VALIGN=TOP><p><b>exit link</b></p></td><td>
+When programming instruction blocks, it is possible to create multiple links from the instruction block 
+(by editing the start instruction).  Within the instruction block each 'end' instruction has
+its own connection to one of the links.  The links are called 'exit links'. They can (and should!) be labelled.</td></tr><tr>
+
+<tr><TD WIDTH=90 VALIGN=TOP><p><b>expression</b></p></td><td>
+<p>A combination of one or more values and/or variable
+names and operators as a sequence of characters. Expressions can
+be 'evaluated', meaning that all operators are applied in order of
+precedence until a constant value remains – the 'returned value'</p></td></tr>
+
+<tr><TD WIDTH=90 VALIGN=TOP><p><b>field</b></p></td><td>
+<p>Refers to a column of a table, or part of a
+'tuple' variable or table row. In tables, fields are referred to
+by name, or by number (1 refers to the leftmost). In simple tuple
+variables they are referred to by number, e.g. “one,two,three”.1
+is “one”</FONT></p></td></tr>
+<tr><TD WIDTH=90 VALIGN=TOP><a id="glos_generator"></a><p><b>generator</b></p></td><td>
+<p>A design pattern in which iterations are 'generated' from a block of
+code rather than a formal looping structure of the language.  It allows reusable 'templates' to be written,
+where the implementation details of some general-purpose code are delegated to code not in the 'generator' block.
+In BUBBL generators can be implemented using a link for each delegated task and the system variable 'NXT' 
+to test whether a block is entered normally, or via a 'Next' instruction, indicating returning from a delegate.
+</FONT></p></td></tr>
+
+<tr><TD WIDTH=90 VALIGN=TOP><p><b>instruction</b></p></td><td>
+<p>One of about 25 codified actions that the computer can do.
+They can be joined together via various 'links' to make a network which represents the programmed behaviour.
+</p></td></tr>
+
+<tr><TD WIDTH=90 VALIGN=TOP><p><b>instruction-block</b></p></td><td>
+<p>An instruction made up a network of other instructions. An instruction block always has a single 'Start'
+ instruction and may have zero or more 'End' instructions.</FONT></p></td></tr>
+
+<tr><TD WIDTH=90 VALIGN=TOP><p><b>iterate</b></p></td><td>
+This means to repeat the same thing over and over.
+The For/Next instruction is used to repeat one or more instructions for each of a set of integers.</tr><tr>
+
+<TD WIDTH=90 VALIGN=TOP><p><b>link</b></p></td><td>
+The connection between two instructions.  Different links starting from the same instruction or block are usually labelled, 
+and represent different decisions of the instruction or block.</td></tr>
+
+<tr><TD WIDTH=90 VALIGN=TOP><p><b>looping</b></p></td><td>
+Looping is a form of iteration, where the same thing is done repeatedly, perhaps using
+different data each time.<br />
+Loops typically have some kind of test which allows the loop to 'exit'.<br />
+With the 'C' programming language and others, loops are constructed with
+'while', 'do while' and 'for' statements with 'continue' and 'break' statements
+used to 'break out' of or 'short-circuit' a loop. <br />
+In BUBBL loops are made either by linking instructions into a loop, with 'if' 
+and/or other multiple-link instructions used to exit, short-circuit or break out of the loop, or by using a 'for-next' pair
+of instructions where the 'looped' instructions connect the 'Do' link of the 'For' instruction to the 'Next' instruction.</td></tr>
+
+<tr><td><B>mark-ups</B></td><td>
+information passed to Output instructions to affect screen position, font, colours etc.
+</td></tr>
+
+<tr><TD VALIGN="TOP"><B>output</B></td><td>
+Information produced by a program for the 'user' to see, read
+or hear. Examples include writing text, showing an image and playing a sound clip.
+</td></tr>
+
+<tr><TD VALIGN="TOP"><B>page</B></td><TD WIDTH=786>
+A 'window' in which a program's 'output' may be displayed.
+</td></tr>
+
+<tr><TD WIDTH=90 VALIGN=TOP><p><b>parameter</b></p></td><td>
+<p>Parameters provide an instruction or instruction block with the detail it needs to work.<br />
+Parameters may be 'input only' or 'input/output'.<br />
+Input only parameters provide information to the instruction or block.<br />
+Output parameters get information from the instruction or block.<br />
+Input/Output parameters bring information in, but they also carry information out of the instruction or block.
+An instruction block's start instruction lists all of the block's parameters.<br />  
+</p></td></tr>
+
+<tr><TD VALIGN="TOP"><B>program</B></td><td>
+A network of instructions which describes how the computer
+should behave. A program can be '<a href="#glos_execute">executed</a>' (or 'run').
+The diagram represents 'states' which determine behaviour in reponse to
+ '<a href="#glos_event">events</a>'.
+</td></tr>
+
+<tr><TD VALIGN="TOP"><B>record</B></td><td>
+Another name for a row of a table, or single data item with
+many named 'fields'
+</td></tr>
+
+<TD WIDTH=90 VALIGN=TOP><p><b>relation</b></p></td><td>
+In mathematics this is a formal way of representing the relationships between items of information or data.  A relation can be thought of as a table with named columns and numbered rows.  The name of the table is the name of the relation, and the column titles are the 'fields' of the relation.  Each column, in principle, has some sort of relationship to other columns, and all have a relationship to the 'name' of the relation.<br/>
+ E.g.  A simple relation used to express personal details:<br/>
+&nbsp; &nbsp;  person(forename,surname,date_of_birth,home_phone)<br/>
+and some members of the relation (or 'tuples'):<br/>
+&nbsp; &nbsp; person(John,Smith,1-12-1990,123456)<br/>
+&nbsp; &nbsp; person(Julie,Snobbit,23-4-1984,102032)<br/></td></tr>
+
+<tr><TD WIDTH=90 VALIGN=TOP><p><b>row</b></p></td><td>
+<p>The primary building block of a table.  It consists one value for each column (field)
+of the table.  The values are separated by commas. Rows may also be referred to as 'tuples'.<br />
+Record 0 of a BUBBL table contains a row whose field values are the field names.
+Note:  When handling a row in its entirety, if a column value contains one
+or more commas they are instead expressed as '|' to prevent them being confused with the row's
+field boundaries. They are, however, expressed as commas if the field is referred to explicitly.
+</p></td></tr>
+
+<tr><TD WIDTH=90 VALIGN=TOP><p><b>set</b></p></td><td>
+In BUBBL sets are made up of integers.  They can usefully be used to index multiple rows of tables and also to handle ranges.
+Sets are surrounded by braces (curly brackets {})
+<br/>
+E.g. {1..5,14,34} has 7 elements, 1,2,3,4,5,14 and 34</td></tr>
+
+
+<h3><A NAME="howToSound"></a>How to play sound</h3>
+<p><a href="#home">Index</a><br /> </p>
+<ol>
+	<li><p>Right-click on the desktop and select 'Add Instruction' from the menu<br />
+	Move the mouse over 'Output` and select 'Play Sound' from the pop-up menu.
+	</p></li>
+	<li><p> Drag the new instruction to where you want it in your program and right-click
+	on it to give it the filename or URL of the `clip` (Eg '.WAV' or '.AIF' file) you want to play.</p></li>
+	<li>
+	<p>Note: Each clip playing has an entry in the system table 'CLIP'.
+ 	Clips can be paused, resumed and started at any position by updating the appropriate fields in
+	the table.  Setting 'Playing' to 1 starts playing the clip from 'Position', writing 0 to it pauses
+	the clip.  The fields 'Duration' and 'Position' are in units of milliseconds (ms).<br/ >
+	A clip can be played without a 'Play sound' instruction by inserting a record in
+	'CLIP' with 'Name' equal to the file name (or URL) of the clip. Deleting a record
+	from CLIP stops a clip playing immediately. <br />
+	When a clip is started with a 'Play sound' instruction, any clips which
+	have run to the end are removed from 'CLIP'.<br />
+	
+	When a clip plays to the end a 'CLIP_END' event is generated.  This
+	allows a program (for example) to loop a clip repetitively, or play a sequence of clips in
+	a controlled manner.</p>	</li>
+	<li>
+	Note: MP3 files are not currently supported by BUBBL.  If you want to play MP3 files, they
+	should first be converted to '.WAV' or '.AIF' format.
+	</p></li>
+</OL>
+<p>A BUBBL program is a diagram made up of
+interlinked instructions. The language itself has about 30 such
+instructions which cover all the things which a programmer may tell the
+computer to do. As a programmer, you can also create your own instructions (or 'blocks') 
+which can be used in programs in just the same way as the built-in ones.<br />
+All available instructions are shown by right clicking on the desktop
+and moving the mouse over 'add instruction'.  The programmer-created
+instruction blocks are shown by moving the mouse over 'Library'.  To add an instruction
+to your program, simply press the mouse on it and drag it onto the desktop or window.
+
+Then you can provide any extra information the instruction needs by right-clicking on it.  This
+usually brings up a form to fill in.<br />
+
+ The computer runs a program by `executing` (i.e. doing) an instruction, then following one of the
+instruction`s `links` to another instruction. It then executes the linked instruction in the same way,
+following links and executing instructions until it has nothing left to do (either it gets to an `End` 
+instruction, the user clicks on the STOP button, or it gets to an unconnected link).<br />
+To start a program running double-click on the instruction you want it to start with.  This 'activates'
+the program, (you should see a blinking rectangle around the instruction).  Next click the `Run` button or, if
+you are being cautious, click the 'Step' button so you can check the results of the instruction and correct
+any mistakes before they cause problems later.  If you need to do a correction you can also use the 'Back' button to 'undo' 
+the last instruction, do the correction, then continue testing without having to go back to the beginning.
+</p>
+<p>&nbsp;&nbsp;Note:  When stepping through a programs, Instruction-blocks can be 'stepped-into' or 'stepped-over' (i.e. treated as a single instruction)
+depending on whether the block' editor window is open.</p>
+<p>To make program development and testing easy, you can have formulas, calculations, tables
+and other 'live' information visible in your program.  These are called 'watches' and can be
+added by selecting 'Watch' from the desktop right-click menu.<br />
+You can also annotate your program with text and/or graphics by left-clicking
+in a blank area, or selecting 'Graphics' from the desktop right-click menu.
+</p>
+<h3>More Debugging tools</h3>
+The system variable <B>DEBUG</B> when written to, causes the value written
+to be echoed to standard output (e.g. in the terminal window if that is where
+Java was run from). This may be useful for debugging things in real-time which happen too fast to see otherwise.<br/>
+Also, assigning a file path and name to the variable "UNDO_DUMP_FILE" will cause 
+the 'undo script' of the last few thousand instructions executed to be output to
+the specified file.  Interpreting this file is beyond the scope of this
+document, however, the reader is encouraged to discover this for his/herself
+by careful experimentation!
+<h3><A NAME="introInfo"></a>Introduction</h3>
+<p><a href="#home">Index</a><br /><br /> 
+<a href="http://youtu.be/HNFLAjWxiBk">
+<img src="BUBBLHelp_files/author.jpg" alt="YouTube video" width="120" height="80">YouTube
+</a>
+<a href="https://vimeo.com/86600153">
+<img src="BUBBLHelp_files/author.jpg" alt="Vimeo video" width="120" height="80">Vimeo
+</a> 
+
+<p><b>What is it?</b><br />
+1. A classroom tool for teaching/learning concepts in computer science<br />
+2. A simple to use, fast to deployment, programming package for 
+Windows/Linux etc.. <br />
+3. A literacy for human/computer interaction using everyday information
+representation paradigms.<br />
+4. A serious 'toy' to allow 'free-play' with information, ideas, 
+and computation.<br />
+</p>
+<br />
+<b>What key concepts from Computer Science does BUBBL embody?</b><br />
+<br />
+<b>Variables and data types:</b>&nbsp;Numeric, string, set, tuple, array,
+table, dictionary (association lists, key-value pairs etc.)<br />
+<b>Iteration and 'looping'</b><br />
+<b>Database:</b>&nbsp;Tables and named relations, queries, sorting,
+insert/delete/update etc.<br />
+<b>Mathematics:</b>&nbsp;Formulas and expressions, operators (functions)<br />
+<b>Graphics:</b>&nbsp;Cartesian co-ordinates in 2 dimensions, images,
+geometrical shapes, fonts, geometrical transformations (affine transforms), RGB colour-space, Alpha-compositing<br />
+<b>User Interface Design:</b>&nbsp;Menus, Input, Drag and Drop<br />
+<b>HTML: </b> Entities, tags</b><br />
+<b>Encapsulation</b><br />
+<b>Event handling</b><br />
+<b>File input/output</b><br />
+<b>Advanced Topics:</b>&nbsp;Child processes, Closures, Communications, Database table joins, Encryption<br />
+
+
+
+</p>
+
+<p><B>Philosophy</B></p>
+<p>At the heart of the BUBBL philosophy is the idea that everything can
+be represented by a string, and that there should be no 'hidden meanings'
+in source code.  This leads to context being used to distinguish data types,
+rather than 'invisible' namespaces; the use of well-defined operators to
+compute functions (rather than mathematical function notation); and to
+the lack of a need for special syntax-related characters like <b>&nbsp;{&nbsp;</b>,<b>&nbsp;}&nbsp;</b> and <b>&nbsp;;&nbsp;</b>.
+&nbsp;BUBBL is designed to map more naturally onto how human beings think, rather
+than how computers process. </p>
+<p>The second essential feature of BUBBL is the way it deals with it's 'world'-i.e.
+inputs, outputs, storage and real time.  Inputs, outputs, storage, and important
+pieces of system information (e.g. clipboard) are concrete elements of BUBBL, and 
+real-time is encapsulated with the <a href="#behavDig">behaviour diagrams</a>.&nbsp;
+A BUBBL behaviour diagram describes completely how the computer (or, more
+precisely, the BUBBL virtual machine) should behave.  Algorithms are precisely
+represented with its flow-chart structure, and 'states' of the program
+are precisely represented with its state-transition structure.  There is
+no need for 'locks', 'synchronisation blocks' and 'event listeners' as these
+are handled in a well-defined way by the BUBBL vm.
+</p>
+<p>The third cornerstone of BUBBL is the full integration of comments and
+annotations (e.g. including images, highlighters and free-hand drawing) into
+the 'source code'.  There is no run-time overhead or penalty for inclusion of these elements,
+as the BUBBL VM loader compiles only the working instructions as it loads them.
+</p>
+<p>The final key philosophical dimension to BUBBL is the lack of an 'error-trapping'
+or 'exception handling' mechanism.  Because functional elements of BUBBL (blocks) can
+have more than one exit link, there is no need for a special mechanism to handle
+'errors'.  'Exceptions' are simply handled by giving them a link.  What is more,
+it is easy for the programmer to deal with exceptions, as the links appear in
+the code in the same place as where decisions should be made about them!.  There can
+be syntax errors or 'runtime' errors (e.g. division by zero) in expressions,
+but these result in the expression evaluation to a string representation of itself.
+When debugging a program  (and such errors are always bugs), it is easy to see where
+ the errors occur by stepping forwards or backwards through the program whilst
+ watching variables and expressions.
+</p>
+<p>From an object-oriented perspective, classes and objects are
+database entities - simple named relations and tuples
+respectively.<br />Methods are operations deriving from and/or on
+tuples and sets of tuples (relations).<br />In the case of (e.g) the
+DISPLAY table, the database entities are mapped onto the 'objects'
+displayed through reading and writing table values.</p>
+<hr />
+<h3><a name="behavDig"></a>BUBBL Behaviour Diagrams</h3>
+<p><a href="#home">Index</a><br /> 
+</p>
+<img src="BUBBLHelp_files/behavDiag.png" width="350" height="300" anchor="right" /><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Video 1 of 4</b><br />
+<a href="http://youtu.be/_ofsdo78I-M">
+<img src="BUBBLHelp_files/videoYT.png" alt="YouTube video" width="80" height="80">
+</a>
+<a href="https://vimeo.com/86859545">
+<img src="BUBBLHelp_files/videoVim.png" alt="Vimeo video" width="80" height="80">
+</a> 
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Video 2 of 4</b><br />
+<a href="http://youtu.be/A-okTQFoMTE">
+<img src="BUBBLHelp_files/videoYT.png" alt="YouTube video" width="80" height="80">
+</a>
+<a href="https://vimeo.com/86859546">
+<img src="BUBBLHelp_files/videoVim.png" alt="Vimeo video" width="80" height="80">
+</a> 
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Video 3 of 4</b><br />
+<a href="http://youtu.be/Ms4bXcPXyRk">
+<img src="BUBBLHelp_files/videoYT.png" alt="YouTube video" width="80" height="80">
+</a>
+<a href="https://vimeo.com/86859547">
+<img src="BUBBLHelp_files/videoVim.png" alt="Vimeo video" width="80" height="80">
+</a> 
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Video 4 of 4</b><br />
+<a href="http://youtu.be/3ByXE81wRdE">
+<img src="BUBBLHelp_files/videoYT.png" alt="YouTube video" width="80" height="80">
+</a>
+<a href="https://vimeo.com/86859548">
+<img src="BUBBLHelp_files/videoVim.png" alt="Vimeo video" width="80" height="80">
+</a> 
+<br />
+<p>See also:<br/>
+<a href="#dataTypesInfo">Data types</a><br/>
+<a href="#operatorsInfo">Operators</a><br/>
+<a href="#sysVarsInfo">System variables</a><br/>
+<a href="#eventsInfo">Events</a><br />
+<a href="#DISPLAYInfo">DISPLAY table</a><br/>
+</p>
+
+<h3><A NAME="fileSysInfo"></a>File system instruction</h3>
+<p><a href="#home">Index</a><br /> 
+</p>
+<a href="http://youtu.be/cMWv5AMWVEU">
+<img src="BUBBLHelp_files/videoYT.png" alt="YouTube video" width="80" height="80">
+</a>
+<a href="https://vimeo.com/86801520">
+<img src="BUBBLHelp_files/videoVim.png" alt="Vimeo video" width="80" height="80">
+</a> 
+
+
+<p>There are 9 types (sub-functions) of file system instruction. Each sub-function
+may succeed or fail, and the corresponding link is followed.  If it fails, the system
+ variable 'FILE_MESSAGE' is set to a message describing the reason for the failure, other
+ wise it is set to "Ok". 
+The sub-functions are as follows:-
+<TABLE border="1"><tr><th>Sub-function</th><th>Description</th></tr>
+<tr><td>Save</td><td>Saves the current program.  If no filename is given it is saved under its current name.</td></tr>
+<tr><td>MakeDir</td><td>Creates a directory</td></tr>
+<tr><td>Delete</td><td>Deletes a file or directory. Directories must be empty before being deleted.</td></tr>
+<tr><td>Rename</td><td>Renames a file or directory</td></tr>
+<tr><td>Copy</td><td>Copies a file of up to 800MB in length to a given destination</td></tr>
+<tr><td>Execute</td><td>Passes a command to the underlying operating system.</td></tr>
+<tr><td>Dump</td><td>Creates or overwrites a file with the contents of a table.  
+The table rows are treated as text strings and are output in the coding specified
+ in the system variable 'ENCODING' unless the filename is prefixed with a special string:<br />
+Prefixing with "HEX," dumps a table representing hexadecimal data as a binary file.<br />
+Prefixing with "JSON," dumps a specially formated table as valid JSON data.<br />The above special formats correspond with the 'Create' instruction special formats, and these can be used to explore their properties in detail.</td></tr>
+
+<tr><td>Append</td><td>As 'Dump' above, but any existing file is appended to rather than overwritten</td></tr>
+<tr><td>Dump_Image</td><td>Creates or overwrites a file with a compressed image file representation of the current output page.  The encoding is determined by the given file extension as follows: filenames ending in '.jpg' or '.JPG' will have the image saved in 'JPEG' format, otherwise the image will be in 'PNG' format)</td></tr>
+</TABLE>
+<tr><td>PROCESS(Command,Ended,ExitCode,Out,Err,In)</td><td>r/w</td><td>Records represent operating system processes started by 'Execute file' instructions.<br />
+The fields are as follows:-<br />
+<p>Command - 'file' executed by 'Execute File' instruction</p>
+<p>Ended - set to 1 when the process terminated </p>
+<p>ExitCode - has the exit code of the ended process.</p>
+<p>Out - Write: Controls 'standard output' of the process. Setting to TRUE (1) enables it (default setting), setting it to any other value disables it.<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Read: Gives a text table containing the process's standard output if it was not redirected.</p>
+<p>Err - Write: Controls 'standard error' of the process. Setting to TRUE (1) enables it (default setting), setting it to any other value disables it.<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    - Gives a text table containing the process's error output if it was not redirected.</p>
+<p>In  - Writes to this field are sent to the process's standard input.</p></td></tr>
+</TABLE>
+<H4><a name="sysVConst">Non-event constants</H4>
+<TABLE border="1">
+<tr><th>Variable</th><th>Access</th><th>Description</th></tr>
+<tr><td>DAY</td><td>r</td><td>Number of seconds in a day=86 400</td></tr>
+<tr><td>HOUR</td><td>r</td><td>Number of seconds in an hour=3 600</td></tr>
+<tr><td>FALSE</td><td>r</td><td>=0</td></tr>
+<tr><td>TRUE</td><td>r</td><td>=1</td></tr>
+<tr><td>PI</td><td>r</td><td>=3.14159265358979323846</td></tr>
+</TABLE><br/>
+
+<p>See also:<br/>
+<a href="#DISPLAYInfo">DISPLAY table</a><br/>
+<a href="#operatorsInfo">Operators</a><br/>
+<a href="#dataTypesInfo">Data types</a><br/>
+<a href="#eventsInfo">Events</a><br/>
+</p>
+<hr />
+<h3><A NAME="dispInfo"></a>The Display</h3>
+<p><a href="#home">Index</a><br /> 
+</p>
+<p>The idea of a 'page' is used to organise visual
+output. Pages can be created and destroyed using `Page-Select` and
+`Page- Destroy` instructions, and can be printed and dumped to image files.</p>
+<p>
+Some output is subject to 'mark-ups' which can be used to control things like fonts
+and colours (see <a href="#formatParsInfo">Output mark-ups</a> ).</p>
+<p>
+The display management system maintains some variables: CP, CX, CY, INK, PAPER,
+FONT, ITALIC, BOLD, PX, PY, PW, PH, DW DH, SW, SH.  Most of these variables apply
+to the current page (CP) only. In general they cannot be directly
+assigned to, but may change as a side effect of some other action
+such as use of the 'Page-Format' instruction.  For example,
+`CX` and `CY` are modified by the 'Ouput-Expression' and
+'Output @' instructions.</p>
+<p>
+Normally the display is maintained using the 'Output' and
+'Page` instructions. The standard unit of size is the 'Point' (1/72
+of an inch for printing). All screen dimensions and coordinates etc.
+follow this convention. Additionally everything in the contents of
+the current page is availble to the program through the table
+variable `DISPLAY`.</p>
+<p>
+ Outputing to pages is affected by the current `mode`: If in
+`direct-write` mode any program output is displayed immediatley on
+the page, and anything written in this mode is subject to on-screen
+corruption by other screen objects (for example other software
+running on the computer).</p>
+<p> Normally however,a list of display items is
+maintained automatically, and the items persist until expressly
+overwritten, scrolled or cleared off the screen. A page can also be
+'frozen' so that items written to it before the 'Page-Freeze'
+instruction are not removed or scrolled, creating a static
+'background'.</p>
+<p>Items added to the display list after any `Page-Freeze
+on` instruction, or all display items, are subject to the following
+rules for removal from the display list.
+ <OL><LI>New items are appended to the end of the table (as in table insert instruction).</LI>
+<LI>'Text' items, 'line' items (lines, rectangle, circle and polygon outlines and
+sectors) and 'area' items (solid rectangles, pictures etc.) are
+treated differently.
+</LI>
+<LI> Subject to the behaviour described above, an
+item will be removed if:
+  <OL><LI>A 'clear screen' instruction is executed</LI>
+      <LI>The list has&gt;2000 items, and the item is number 1</LI>
+      <LI>It's y-coordinate is -Ve after scrolling</LI>
+      <LI>It is completely overlapped by a new 'area' object</LI>
+      <LI>It is a text item and a new text item has the same co-ords</LI>
+  </OL>
+</LI>
+</OL>
+However, an item may be displayed (appended to the table)
+without affecting others at all if the 'a' (for append) mark-up is used.<br/>
+See also:<br/>
+<a href="#DISPLAYInfo">DISPLAY table</a><br/>
+<a href="#outputInfo">Output instruction</a><br/>
+<a href="#pageInfo">Page instruction</a><br/>
+<a href="#sysVarsInfo">System variables</a><br/>
+<a href="#formatParsInfo">Output mark-ups</a><br/>
+</p>
+</BODY>
+</HTML>
+
